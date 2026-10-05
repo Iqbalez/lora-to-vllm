@@ -1,0 +1,19 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+COPY pyproject.toml README.md LICENSE requirements.txt ./
+COPY nimbus_llm ./nimbus_llm
+COPY configs ./configs
+COPY data ./data
+
+RUN pip install --no-cache-dir -r requirements.txt \
+    && pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu
+
+ENV PYTHONUNBUFFERED=1
+ENV NIMBUS_BACKEND=vllm
+ENV NIMBUS_MODEL=nimbus-awq
+ENV VLLM_BASE_URL=http://vllm:8000/v1
+ENV NIMBUS_API_KEY=changeme
+
+EXPOSE 8000
+CMD ["python", "-m", "nimbus_llm", "serve", "--config", "configs/serve.yaml", "--backend", "vllm", "--host", "0.0.0.0", "--port", "8000"]

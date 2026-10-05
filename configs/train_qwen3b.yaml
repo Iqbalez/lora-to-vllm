@@ -1,0 +1,39 @@
+model_name: Qwen/Qwen2.5-3B-Instruct
+output_dir: outputs/qwen25-3b-nimbus-lora
+max_seq_length: 2048
+seed: 7
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+
+training:
+  epochs: 2
+  learning_rate: 2.0e-4
+  per_device_train_batch_size: 2
+  gradient_accumulation_steps: 8
+  warmup_ratio: 0.03
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+  logging_steps: 10
+  eval_steps: 50
+  save_steps: 100
+  gradient_checkpointing: true
+  packing: false
+  lr_scheduler_type: cosine
+  # LoRA on 3B fits in 24 GB with QLoRA 4-bit. Set false on A100 80 GB.
+  load_in_4bit: true
+  mixed_precision: bf16
+
+data:
+  train: data/processed/train.jsonl
+  val: data/processed/val.jsonl

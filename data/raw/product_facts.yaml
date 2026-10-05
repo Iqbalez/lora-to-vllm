@@ -1,0 +1,139 @@
+product:
+  name: Nimbus
+  legal_name: Nimbus API Platform
+  docs_url: https://docs.nimbus.dev
+  status_url: https://status.nimbus.dev
+  support_email: support@nimbus.dev
+  sales_email: sales@nimbus.dev
+  security_email: security@nimbus.dev
+
+plans:
+  - id: free
+    name: Free
+    monthly_usd: 0
+    events_per_month: 50000
+    rpm: 60
+    burst: 120
+    log_retention_days: 7
+    sso: false
+    dedicated_slack: false
+  - id: pro
+    name: Pro
+    monthly_usd: 79
+    events_per_month: 2000000
+    rpm: 600
+    burst: 1200
+    log_retention_days: 90
+    sso: false
+    dedicated_slack: false
+  - id: business
+    name: Business
+    monthly_usd: 399
+    events_per_month: 20000000
+    rpm: 3000
+    burst: 6000
+    log_retention_days: 180
+    sso: true
+    dedicated_slack: true
+  - id: enterprise
+    name: Enterprise
+    monthly_usd: null
+    events_per_month: custom
+    rpm: 6000
+    burst: 12000
+    log_retention_days: 365
+    sso: true
+    dedicated_slack: true
+
+auth:
+  header: "Authorization: Bearer <api_key>"
+  key_prefix: nimbus_live_
+  test_key_prefix: nimbus_test_
+  key_length_hint: "keys are 48 characters after the prefix"
+  rotate_grace_hours: 24
+  max_keys_free: 2
+  max_keys_pro: 8
+  max_keys_business: 40
+
+errors:
+  - code: NMB-400
+    meaning: Malformed JSON or missing required field
+    http: 400
+  - code: NMB-401
+    meaning: Invalid or missing API key
+    http: 401
+  - code: NMB-403
+    meaning: Key is valid but not allowed to access this resource
+    http: 403
+  - code: NMB-404
+    meaning: Event id or endpoint does not exist
+    http: 404
+  - code: NMB-409
+    meaning: Idempotency key reused with a different payload
+    http: 409
+  - code: NMB-413
+    meaning: Event payload larger than 256 KB
+    http: 413
+  - code: NMB-422
+    meaning: Schema validation failed
+    http: 422
+  - code: NMB-429
+    meaning: Rate limit exceeded; honor Retry-After
+    http: 429
+  - code: NMB-500
+    meaning: Internal error; retry with the same idempotency key
+    http: 500
+  - code: NMB-503
+    meaning: Regional ingest is in maintenance
+    http: 503
+
+ingest:
+  max_payload_kb: 256
+  timeout_seconds: 10
+  idempotency_header: Idempotency-Key
+  idempotency_ttl_hours: 24
+  content_type: application/json
+
+webhooks:
+  timeout_seconds: 5
+  max_retries: 8
+  backoff: exponential, starting at 2 seconds, capped at 1 hour
+  retry_window_hours: 24
+  signature_header: X-Nimbus-Signature
+  signature_algo: HMAC-SHA256 of `${timestamp}.${raw_body}`
+  required_https: true
+
+regions:
+  - id: us-east-1
+    city: Ashburn
+    residency: US
+  - id: eu-west-1
+    city: Frankfurt
+    residency: EU / GDPR
+  - id: ap-south-1
+    city: Mumbai
+    residency: India
+
+sso:
+  protocols: [SAML 2.0, OIDC]
+  min_plan: Business
+  scim: Enterprise only
+  session_hours: 12
+
+sla:
+  pro_uptime: 99.9%
+  business_uptime: 99.95%
+  enterprise_uptime: 99.99%
+  credit_rule: "10% monthly credit if monthly uptime misses the plan SLO, capped at 50%"
+
+security:
+  encryption_at_rest: AES-256
+  encryption_in_transit: TLS 1.2+
+  pentest: annual, summary available under NDA
+  bug_bounty: yes, via security@nimbus.dev
+  pii_in_events: "allowed but payloads are not used to train models"
+
+unknown_policy: >
+  If the question is not covered by product facts, say you do not know,
+  do not invent error codes, prices, limits, or SLAs, and tell the user
+  to email support@nimbus.dev or check https://status.nimbus.dev for outages.

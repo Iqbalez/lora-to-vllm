@@ -1,0 +1,7 @@
+# Linux + NVIDIA only. Do not install these on Windows.
+-r requirements.txt
+bitsandbytes>=0.44
+autoawq>=0.2
+# vLLM is served from the official Docker image in docker/docker-compose.yml.
+# If you install it on the host instead:
+#   pip install vllm

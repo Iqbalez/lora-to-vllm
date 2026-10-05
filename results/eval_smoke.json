@@ -1,0 +1,269 @@
+{
+  "base_model": "sshleifer/tiny-gpt2",
+  "adapter_path": "outputs/smoke-tiny-gpt2/adapter",
+  "test_path": "C:\\Users\\user\\Desktop\\lora-to-vllm\\data\\processed\\test.jsonl",
+  "limit": 8,
+  "base": {
+    "n": 8,
+    "fact_coverage": 0.0,
+    "pass_rate": 0.0,
+    "clean_rate": 1.0
+  },
+  "adapter": {
+    "n": 8,
+    "fact_coverage": 0.0,
+    "pass_rate": 0.0,
+    "clean_rate": 1.0
+  },
+  "pairwise": {
+    "adapter": 0,
+    "base": 0,
+    "tie": 8
+  },
+  "base_examples": [
+    {
+      "id": "test-error.NMB-422-0056",
+      "topic": "errors",
+      "fact_id": "error.NMB-422",
+      "coverage": 0.0,
+      "clean": 1.0,
+      "pass": false,
+      "hits": [],
+      "misses": [
+        "NMB-422",
+        "422"
+      ],
+      "leaks": [],
+      "prediction": "factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors"
+    },
+    {
+      "id": "test-error.NMB-404-0045",
+      "topic": "errors",
+      "fact_id": "error.NMB-404",
+      "coverage": 0.0,
+      "clean": 1.0,
+      "pass": false,
+      "hits": [],
+      "misses": [
+        "NMB-404",
+        "404"
+      ],
+      "leaks": [],
+      "prediction": "factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors"
+    },
+    {
+      "id": "test-error.NMB-429-0061",
+      "topic": "errors",
+      "fact_id": "error.NMB-429",
+      "coverage": 0.0,
+      "clean": 1.0,
+      "pass": false,
+      "hits": [],
+      "misses": [
+        "NMB-429",
+        "429"
+      ],
+      "leaks": [],
+      "prediction": "factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors"
+    },
+    {
+      "id": "test-auth.rotate-0079",
+      "topic": "auth",
+      "fact_id": "auth.rotate",
+      "coverage": 0.0,
+      "clean": 1.0,
+      "pass": false,
+      "hits": [],
+      "misses": [
+        "24",
+        "8"
+      ],
+      "leaks": [],
+      "prediction": "factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors"
+    },
+    {
+      "id": "test-pricing.pro-0114",
+      "topic": "plans",
+      "fact_id": "pricing.pro",
+      "coverage": 0.0,
+      "clean": 1.0,
+      "pass": false,
+      "hits": [],
+      "misses": [
+        "79",
+        "600",
+        "2000000"
+      ],
+      "leaks": [],
+      "prediction": "factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors"
+    },
+    {
+      "id": "test-auth.rotate-0076",
+      "topic": "auth",
+      "fact_id": "auth.rotate",
+      "coverage": 0.0,
+      "clean": 1.0,
+      "pass": false,
+      "hits": [],
+      "misses": [
+        "24",
+        "8"
+      ],
+      "leaks": [],
+      "prediction": "factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors"
+    },
+    {
+      "id": "test-unknown.catch-0116",
+      "topic": "unknown",
+      "fact_id": "unknown.catch",
+      "coverage": 0.0,
+      "clean": 1.0,
+      "pass": false,
+      "hits": [],
+      "misses": [
+        "support@nimbus.dev"
+      ],
+      "leaks": [],
+      "prediction": "factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors"
+    },
+    {
+      "id": "test-sla.uptime-0107",
+      "topic": "sla",
+      "fact_id": "sla.uptime",
+      "coverage": 0.0,
+      "clean": 1.0,
+      "pass": false,
+      "hits": [],
+      "misses": [
+        "99.9%",
+        "99.95%",
+        "99.99%"
+      ],
+      "leaks": [],
+      "prediction": "factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors"
+    }
+  ],
+  "adapter_examples": [
+    {
+      "id": "test-error.NMB-422-0056",
+      "topic": "errors",
+      "fact_id": "error.NMB-422",
+      "coverage": 0.0,
+      "clean": 1.0,
+      "pass": false,
+      "hits": [],
+      "misses": [
+        "NMB-422",
+        "422"
+      ],
+      "leaks": [],
+      "prediction": "factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors"
+    },
+    {
+      "id": "test-error.NMB-404-0045",
+      "topic": "errors",
+      "fact_id": "error.NMB-404",
+      "coverage": 0.0,
+      "clean": 1.0,
+      "pass": false,
+      "hits": [],
+      "misses": [
+        "NMB-404",
+        "404"
+      ],
+      "leaks": [],
+      "prediction": "factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors"
+    },
+    {
+      "id": "test-error.NMB-429-0061",
+      "topic": "errors",
+      "fact_id": "error.NMB-429",
+      "coverage": 0.0,
+      "clean": 1.0,
+      "pass": false,
+      "hits": [],
+      "misses": [
+        "NMB-429",
+        "429"
+      ],
+      "leaks": [],
+      "prediction": "factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors"
+    },
+    {
+      "id": "test-auth.rotate-0079",
+      "topic": "auth",
+      "fact_id": "auth.rotate",
+      "coverage": 0.0,
+      "clean": 1.0,
+      "pass": false,
+      "hits": [],
+      "misses": [
+        "24",
+        "8"
+      ],
+      "leaks": [],
+      "prediction": "factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors"
+    },
+    {
+      "id": "test-pricing.pro-0114",
+      "topic": "plans",
+      "fact_id": "pricing.pro",
+      "coverage": 0.0,
+      "clean": 1.0,
+      "pass": false,
+      "hits": [],
+      "misses": [
+        "79",
+        "600",
+        "2000000"
+      ],
+      "leaks": [],
+      "prediction": "factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors"
+    },
+    {
+      "id": "test-auth.rotate-0076",
+      "topic": "auth",
+      "fact_id": "auth.rotate",
+      "coverage": 0.0,
+      "clean": 1.0,
+      "pass": false,
+      "hits": [],
+      "misses": [
+        "24",
+        "8"
+      ],
+      "leaks": [],
+      "prediction": "factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors"
+    },
+    {
+      "id": "test-unknown.catch-0116",
+      "topic": "unknown",
+      "fact_id": "unknown.catch",
+      "coverage": 0.0,
+      "clean": 1.0,
+      "pass": false,
+      "hits": [],
+      "misses": [
+        "support@nimbus.dev"
+      ],
+      "leaks": [],
+      "prediction": "factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors"
+    },
+    {
+      "id": "test-sla.uptime-0107",
+      "topic": "sla",
+      "fact_id": "sla.uptime",
+      "coverage": 0.0,
+      "clean": 1.0,
+      "pass": false,
+      "hits": [],
+      "misses": [
+        "99.9%",
+        "99.95%",
+        "99.99%"
+      ],
+      "leaks": [],
+      "prediction": "factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors"
+    }
+  ]
+}

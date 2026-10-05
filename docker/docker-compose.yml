@@ -1,0 +1,43 @@
+services:
+  vllm:
+    image: vllm/vllm-openai:latest
+    runtime: nvidia
+    environment:
+      - HUGGING_FACE_HUB_TOKEN=${HF_TOKEN:-}
+    volumes:
+      - ../outputs/awq-int4:/model:ro
+      - hf_cache:/root/.cache/huggingface
+    command: >
+      --model /model
+      --quantization awq
+      --dtype auto
+      --max-model-len 4096
+      --gpu-memory-utilization 0.90
+      --enable-prefix-caching
+      --served-model-name nimbus-awq
+    ports:
+      - "8001:8000"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.api
+    environment:
+      NIMBUS_BACKEND: vllm
+      NIMBUS_MODEL: nimbus-awq
+      VLLM_BASE_URL: http://vllm:8000/v1
+      NIMBUS_API_KEY: ${NIMBUS_API_KEY:-dev-local-key}
+    ports:
+      - "8000:8000"
+    depends_on:
+      - vllm
+
+volumes:
+  hf_cache:

@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+dist/
+build/
+
+# Secrets and local env
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Training artifacts (too large for git)
+outputs/
+checkpoints/
+wandb/
+runs/
+models/
+adapters/
+merged/
+quantized/
+hf_cache/
+.cache/
+
+# Keep small processed text data
+!data/processed/.gitkeep
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Logs and local results dumps
+*.log
+results/local/
+results/*.json
+!results/eval_smoke.json
+!results/README.md

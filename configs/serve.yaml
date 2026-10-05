@@ -1,0 +1,10 @@
+host: 0.0.0.0
+port: 8000
+backend: transformers   # transformers | vllm
+model_name: sshleifer/tiny-gpt2
+adapter_path: ""        # PEFT adapter dir, transformers backend only
+vllm_base_url: http://127.0.0.1:8001/v1
+api_key: dev-local-key
+max_new_tokens: 256
+temperature: 0.1
+system_prompt_override: ""
